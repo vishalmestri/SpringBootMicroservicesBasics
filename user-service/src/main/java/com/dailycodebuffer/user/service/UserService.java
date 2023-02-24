@@ -36,7 +36,7 @@ public class UserService {
 		Users user=repository.getById(id);
 		response.setUser(user);
 		
-		Department department=	restTemplate.getForObject("http://localhost:9001/departments/"+user.getDepartmentId(), Department.class);
+		Department department=	restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/"+user.getDepartmentId(), Department.class);
 	
 		response.setDepartment(department);
 		return response;
