@@ -1,0 +1,12 @@
+{
+	"name":"IT",
+	"address":"address 1",
+	"code":"IT 1"
+}
+
+
+{
+	"name":"HR",
+	"address":"address 1",
+	"code":"HR 1"
+}
