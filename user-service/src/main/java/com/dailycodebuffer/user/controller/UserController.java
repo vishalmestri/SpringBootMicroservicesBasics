@@ -12,6 +12,8 @@ import com.dailycodebuffer.user.entity.Users;
 import com.dailycodebuffer.user.service.UserService;
 import com.dailycodebuffer.user.vo.Response;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -31,7 +33,15 @@ public class UserController {
 	}
 	
 	@GetMapping("/details/{id}")
+	@CircuitBreaker(name = DEPARTEMENT_SERVICE,fallbackMethod = "departmentServiceFallback")
 	public Response findUserDetailsById(@PathVariable("id") Long id) {
 		return service.findUserDetailsById(id);
+	}
+	
+	
+	private static final String DEPARTEMENT_SERVICE="DEPARTMENTSERVICE";
+	public Response departmentServiceFallback(Exception e) {
+		Response r=new Response();
+		return r;
 	}
 }
