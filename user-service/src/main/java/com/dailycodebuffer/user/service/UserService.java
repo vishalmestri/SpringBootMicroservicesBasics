@@ -9,7 +9,10 @@ import com.dailycodebuffer.user.repository.UserRepository;
 import com.dailycodebuffer.user.vo.Department;
 import com.dailycodebuffer.user.vo.Response;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class UserService {
 
 	@Autowired
@@ -30,7 +33,7 @@ public class UserService {
 
 	public Response findUserDetailsById(Long id) {
 		// TODO Auto-generated method stub
-		
+		log.info("findUserDetailsById-id="+id);
 		Response response=new Response();
 		
 		Users user=repository.getById(id);
@@ -39,6 +42,8 @@ public class UserService {
 		Department department=	restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/"+user.getDepartmentId(), Department.class);
 	
 		response.setDepartment(department);
+		
+		log.info("findUserDetailsById-id="+id+"|user="+user+"|department="+department);
 		return response;
 	}
 	
