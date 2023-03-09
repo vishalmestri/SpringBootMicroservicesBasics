@@ -38,7 +38,7 @@ public class Configuration {
 					.and()
 					.formLogin();
 		*/
-		
+		System.out.println("hi");
 		httpSecurity.csrf().disable().
 		authorizeHttpRequests()
 		.requestMatchers("/mysite/home/normalUser/**").hasRole("NORMAL")

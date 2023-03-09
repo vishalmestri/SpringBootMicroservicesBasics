@@ -14,6 +14,7 @@ public class RestControllerAdviceExceptions {
 	@ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String processRuntimeException(RuntimeException e) {
+		System.out.println("hi");
 		log.info(e.getMessage());
         return  "An internal server error occurred.";
     }

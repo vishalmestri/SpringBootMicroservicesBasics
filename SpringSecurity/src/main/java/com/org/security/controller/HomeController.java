@@ -45,6 +45,7 @@ public class HomeController {
 	@GetMapping("/home/normalUser")
 	@ResponseBody
 	public String homeLoginWithNormalUser() {
+		System.out.println("hi");
 		log.info("homeLoginWithNormalUser=>reached... here....");
 		return "home login with normal user";
 	}
