@@ -43,6 +43,9 @@ public class Configuration {
 		authorizeHttpRequests()
 		.requestMatchers("/mysite/home/normalUser/**").hasRole("NORMAL")
 		.requestMatchers("/mysite/home/adminUser/**").hasRole("ADMIN")
+		//.requestMatchers("/actuator/**").hasRole("SUPERADMIN")
+		.requestMatchers("/actuator/**").hasAuthority("SUPERADMIN-SESSION")
+		
 		.requestMatchers("/mysite/home","/mysite/authenticate").permitAll()
 		.anyRequest().authenticated()
 		.and()

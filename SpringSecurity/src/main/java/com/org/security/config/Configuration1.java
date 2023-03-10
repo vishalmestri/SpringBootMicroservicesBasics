@@ -37,7 +37,11 @@ public class Configuration1 {
 		
 		UserDetails adminUsers=  User.withUsername("admin").password(passwordEncoder().encode("admin")).roles("ADMIN").build();
 		
-		InMemoryUserDetailsManager inMemoryUserDetailsManager=new InMemoryUserDetailsManager(normalUsers,adminUsers);
+		
+		UserDetails monitoringUsers=  User.withUsername("superadmin").password(passwordEncoder().encode("superadmin")).authorities("SUPERADMIN-SESSION").build();
+				//roles("SUPERADMIN").build();
+		
+		InMemoryUserDetailsManager inMemoryUserDetailsManager=new InMemoryUserDetailsManager(normalUsers,adminUsers,monitoringUsers);
 		
 		return inMemoryUserDetailsManager;
 	}

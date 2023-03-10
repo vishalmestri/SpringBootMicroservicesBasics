@@ -5,3 +5,9 @@ logging:
     org:
       springframework:
         security: TRACE
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"

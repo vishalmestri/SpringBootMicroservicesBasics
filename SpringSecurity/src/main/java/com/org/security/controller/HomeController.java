@@ -1,5 +1,7 @@
 package com.org.security.controller;
 
+import java.net.http.HttpRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +21,7 @@ import com.org.security.model.AuthenticationRequest;
 import com.org.security.model.AuthenticationResponse;
 import com.org.security.util.JwtUtil;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -45,7 +48,7 @@ public class HomeController {
 	@GetMapping("/home/normalUser")
 	@ResponseBody
 	public String homeLoginWithNormalUser() {
-		System.out.println("hi");
+	//	log.info("session ="+httpRequest.getSession());
 		log.info("homeLoginWithNormalUser=>reached... here....");
 		return "home login with normal user";
 	}
@@ -53,6 +56,7 @@ public class HomeController {
 	@GetMapping("/home/adminUser")
 	@ResponseBody
 	public String homeLoginWithAdminUser() {
+//		log.info("session ="+httpRequest.getSession());
 		return "home login with admin user";
 	}
 	
